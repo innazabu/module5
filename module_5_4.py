@@ -6,13 +6,13 @@ class House:
     houses_history = []
 
     def __del__(self):
-        self.houses_history.append(f'{self.name} снесён, но останется в истории')
-        return f'{self.name} снесён, но останется в истории'
+        print(f'{self.name} снесён, но останется в истории')
 
 
     def __new__(cls, *args, **kwargs):
         cls.houses_history.append(args[0])
-
+        return super().__new__(cls)
+        
     def go_to(self, new_floor):
         if (new_floor > self.number_of_floors) or (new_floor < 1):
             print('Такого этажа не существует')
